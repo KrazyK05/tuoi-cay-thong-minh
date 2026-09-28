@@ -1,0 +1,24 @@
+# Render Blueprint — tạo web service tự động (Render → New → Blueprint → chọn repo này)
+services:
+  - type: web
+    name: tuoi-cay-thong-minh
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: SUPABASE_URL
+        sync: false          # Render sẽ hỏi bạn nhập khi tạo
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true  # Render tự sinh chuỗi ngẫu nhiên
+      - key: ALLOW_REGISTER
+        value: "true"
+      - key: RETENTION_DAYS
+        value: "90"

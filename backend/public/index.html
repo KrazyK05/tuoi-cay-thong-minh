@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tưới Cây Thông Minh</title>
+  <meta name="theme-color" content="#1f7a4d">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 3C11 10 7 14.5 7 19a9 9 0 0 0 18 0c0-4.5-4-9-9-16z' fill='%231f7a4d'/></svg>">
+  <link rel="stylesheet" href="/app.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar" id="topbar" hidden>
+    <a class="brand" href="#/devices">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C11 10 7 14.5 7 19a9 9 0 0 0 18 0c0-4.5-4-9-9-16z"/></svg>
+      <span>Tưới Cây Thông Minh</span>
+    </a>
+    <nav>
+      <a href="#/devices" data-nav="devices">Thiết bị</a>
+      <a href="#/admin" data-nav="admin" id="navAdmin" hidden>Quản trị</a>
+      <a href="#/account" data-nav="account">Tài khoản</a>
+      <button class="btn ghost sm" id="btnLogout" type="button">Đăng xuất</button>
+    </nav>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="modal">
+    <form method="dialog" class="modal-body" id="modalBody"></form>
+  </dialog>
+
+  <script>
+    // Mở file trực tiếp (file://) thì app.js không tải được và không có API → báo cách chạy đúng
+    if (location.protocol === 'file:') {
+      document.body.innerHTML =
+        '<div style="max-width:560px;margin:60px auto;padding:24px;font:15px/1.6 system-ui,sans-serif;' +
+        'border:1px solid #d9e3dd;border-radius:12px;background:#fff;color:#16241c">' +
+        '<h2 style="margin:0 0 8px">Không mở trực tiếp file này</h2>' +
+        '<p>Trang web cần <b>server Node.js</b> chạy thì mới hoạt động. Cách chạy:</p>' +
+        '<ol><li>Giải nén file zip ra một thư mục (không mở từ bên trong WinRAR).</li>' +
+        '<li>Mở cmd trong thư mục <code>backend</code>, chạy <code>npm install</code> rồi <code>npm start</code>.</li>' +
+        '<li>Mở trình duyệt vào <b>http://localhost:3000</b>.</li></ol>' +
+        '<p>Hoặc triển khai lên Render rồi mở <code>https://ten-app.onrender.com</code> (xem README).</p></div>';
+      document.body.style.background = '#f4f7f5';
+    }
+  </script>
+</body>
+</html>
