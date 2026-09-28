@@ -1,5 +1,5 @@
 /* =====================================================================
- *  net — WiFi (tự kết nối lại), mDNS (tuoicay.local)
+ *  net — WiFi (tự kết nối lại), mDNS (iotfarm.local)
  * ===================================================================== */
 #ifndef NET_H
 #define NET_H

@@ -1,11 +1,11 @@
-// Trang web nội bộ chạy ngay trên ESP32 (http://<IP> hoặc http://tuoicay.local).
+// Trang web nội bộ chạy ngay trên ESP32 (http://<IP> hoặc http://iotfarm.local).
 // Dùng được trong mạng LAN kể cả khi mất Internet / server cloud ngủ.
 #pragma once
 #include <pgmspace.h>
 
 const char LOCAL_PAGE[] PROGMEM = R"HTML(<!doctype html>
 <html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tưới cây - Nội bộ</title>
+<title>IoTFarm - Nội bộ</title>
 <style>
 :root{--bg:#f4f7f5;--c:#fff;--t:#16241c;--m:#5b6b62;--b:#d9e3dd;--p:#1f7a4d;--w:#1d6fb8;--s:#eef3f0}
 @media(prefers-color-scheme:dark){:root{--bg:#0f1512;--c:#161e1a;--t:#e4ece7;--m:#97a69d;--b:#2a3630;--p:#3fb57a;--w:#5aa8ec;--s:#1c2621}}
@@ -21,7 +21,7 @@ label{font-size:.85rem;font-weight:600}input{width:100%;padding:8px;border:1px s
 .save{margin-top:12px;width:100%;padding:10px;border:0;border-radius:10px;background:var(--p);color:#fff;font:inherit;font-weight:600}
 .m{color:var(--m);font-size:.85rem}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
 </style></head><body><main>
-<h1>Tưới cây thông minh</h1><div class="m" id="st">Đang tải…</div>
+<h1>Hệ thống giám sát cây trồng</h1><div class="m" id="st">Đang tải…</div>
 <div class="card g">
  <div><div class="k">Nhiệt độ</div><div class="v" id="t">--</div></div>
  <div><div class="k">Độ ẩm không khí</div><div class="v" id="h">--</div></div>

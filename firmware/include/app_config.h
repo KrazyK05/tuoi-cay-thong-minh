@@ -16,7 +16,7 @@
 #define DEVICE_KEY       "dev_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 /* ---------- Web nội bộ trên ESP32 (dùng trong LAN, kể cả khi mất Internet) ---------- */
-#define MDNS_NAME        "tuoicay"      /* truy cập http://tuoicay.local */
+#define MDNS_NAME        "iotfarm"      /* truy cập http://iotfarm.local */
 #define LOCAL_WEB_USER   "admin"        /* để "" nếu không cần mật khẩu */
 #define LOCAL_WEB_PASS   "12345678"
 

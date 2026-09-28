@@ -16,7 +16,7 @@
  *   lib/rtc_ds1302        (C)        driver đồng hồ DS1302
  *   lib/timekeeper        (C)        giờ hệ thống luôn lấy từ DS1302 (có/không WiFi)
  *   lib/cloud                        đồng bộ server Render (Core 0)
- *   lib/local_web                    web nội bộ http://tuoicay.local
+ *   lib/local_web                    web nội bộ http://iotfarm.local
  *
  *  Core 1 (loop): cảm biến → điều khiển bơm → nút → web nội bộ → màn hình
  *                 luôn chạy thời gian thực, KHÔNG phụ thuộc Internet.
@@ -126,7 +126,7 @@ void setup(void)
     pump_init();                 /* relay TẮT ngay lập tức, trước mọi thứ khác */
     Serial.begin(115200);
     delay(100);
-    Serial.println("\n=== TUOI CAY THONG MINH v" FIRMWARE_VERSION " ===");
+    Serial.println("\n=== IoTFarm - HE THONG GIAM SAT CAY TRONG v" FIRMWARE_VERSION " ===");
 
     state_init();                /* đọc cài đặt đã lưu trong NVS */
     timekeeper_init();           /* giờ hệ thống lấy từ DS1302 */

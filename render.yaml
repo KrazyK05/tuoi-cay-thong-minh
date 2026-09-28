@@ -1,7 +1,7 @@
 # Render Blueprint — tạo web service tự động (Render → New → Blueprint → chọn repo này)
 services:
   - type: web
-    name: tuoi-cay-thong-minh
+    name: iotfarm
     runtime: node
     rootDir: backend
     plan: free

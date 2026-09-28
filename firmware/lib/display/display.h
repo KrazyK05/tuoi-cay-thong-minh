@@ -3,7 +3,7 @@
  *
  *  Bố cục (nằm ngang):
  *   ┌───────────────────────────────────────────────┐
- *   │ TUOI CAY THONG MINH     ● WiFi ● Cloud  23:45 │  thanh tiêu đề
+ *   │ GIAM SAT CAY TRONG      ● WiFi ● Cloud  23:45 │  thanh tiêu đề
  *   ├───────────────┬───────────────┬───────────────┤
  *   │ NHIET DO      │ DO AM KK      │ DO AM DAT     │  3 ô số liệu
  *   │ 29.4 °C       │ 69 %          │ 47 %  [====|] │

@@ -1,4 +1,4 @@
-# HỆ THỐNG TƯỚI CÂY THÔNG MINH IoT (ESP32 + Cloud)
+# IoTFarm — HỆ THỐNG GIÁM SÁT CÂY TRỒNG (ESP32 + Cloud)
 
 ESP32 đọc **DHT11** (nhiệt độ, độ ẩm không khí) và **cảm biến độ ẩm đất**, hiển thị trên **màn hình TFT ILI9341 320x240**, giữ giờ bằng **đồng hồ DS1302**, điều khiển **máy bơm qua relay 5V** với 2 chế độ **AUTO / MANUAL**. Dữ liệu và lệnh điều khiển đi qua **server cloud chạy 24/7** có **IP/tên miền công cộng** — ai có tài khoản đều vào được từ bất kỳ mạng nào (4G, WiFi khác…). Có **quản lý người dùng** (đăng ký, phân quyền, khoá tài khoản) và **quản lý thiết bị** (thêm, đổi tên, cấp khoá, chuyển chủ sở hữu).
 
@@ -210,7 +210,7 @@ Mỗi chức năng là **một thư viện riêng** trong `lib/`, gồm file `.h
 | `display` | C++ | Toàn bộ giao diện TFT (màu, vị trí ở đầu file) | đổi giao diện màn hình |
 | `net` | C++ | WiFi tự kết nối lại, mDNS | đổi cách kết nối mạng |
 | `cloud` | C++ | Task Core 0 đồng bộ với server Render | đổi giao thức với server |
-| `local_web` | C++ | Web nội bộ `http://tuoicay.local` (`web_page.h` là HTML) | sửa trang web trên ESP32 |
+| `local_web` | C++ | Web nội bộ `http://iotfarm.local` (`web_page.h` là HTML) | sửa trang web trên ESP32 |
 | `time_utils` | **C thuần** (`.c`) | Đổi ngày giờ ↔ giờ UNIX, mã BCD, kiểm tra ngày, đọc lệnh `SETTIME` | — |
 | `rtc_ds1302` | **C** (`.c`) | Driver đọc/ghi chip DS1302 (giao tiếp 3 dây) | đổi sang chip RTC khác |
 | `timekeeper` | **C** (`.c`) | Giờ hệ thống luôn lấy từ DS1302, đặt giờ tay, chỉnh lệch theo server | đổi cách giữ giờ |
@@ -230,7 +230,7 @@ DS1302 là **nguồn giờ duy nhất** của hệ thống, **dù có WiFi hay k
 - **Cách chạy:** lúc khởi động và cứ **10 giây** một lần, ESP32 đọc DS1302 rồi đặt làm giờ hệ thống. Mỗi lần đọc thực hiện **2 lần liên tiếp và so khớp**, để loại lần đọc sai do nhiễu hoặc lỏng dây.
 - **DS1302 bị lỗi giữa chừng** (tuột dây): giờ **không bị mất**. ESP32 tạm chạy tiếp bằng đồng hồ bên trong, giờ trên màn hình chuyển **màu cam**, Serial báo `[RTC] LOI`. Nối lại dây thì tự đọc DS1302 trở lại.
 - **Đặt giờ lần đầu** (DS1302 mới hoặc vừa thay pin), chọn một trong ba cách:
-  1. Web nội bộ `http://tuoicay.local` → khung **Đồng hồ DS1302** → **Đặt giờ theo máy này**: lấy giờ của điện thoại/laptop ghi vào DS1302. **Không cần Internet.**
+  1. Web nội bộ `http://iotfarm.local` → khung **Đồng hồ DS1302** → **Đặt giờ theo máy này**: lấy giờ của điện thoại/laptop ghi vào DS1302. **Không cần Internet.**
   2. Serial Monitor (chọn *Newline*) gõ: `SETTIME 2026-09-29 01:45:00` (giờ Việt Nam). Gõ `TIME` để xem giờ hiện tại.
   3. Để tự động: khi ESP32 kết nối được server lần đầu, giờ server được ghi vào DS1302.
 - **Tự chỉnh khi lệch** (`TIME_AUTO_CORRECT 1`, mặc định): có mạng thì ESP32 so giờ DS1302 với giờ server. Chỉ khi **lệch quá 5 giây** mới ghi lại DS1302, còn lại giờ vẫn **đọc từ DS1302**. Đặt `TIME_AUTO_CORRECT 0` nếu muốn DS1302 hoàn toàn độc lập, chỉ chỉnh bằng tay.
@@ -263,7 +263,7 @@ Mỗi cảm biến cho giá trị khác nhau. Xem số **ADC** trên màn hình 
 - **Giữ 2 giây**: về chế độ AUTO.
 
 ### Web nội bộ trên ESP32 (không cần Internet)
-Trong cùng mạng WiFi, mở `http://tuoicay.local` (hoặc địa chỉ IP hiện ở chân màn hình TFT). Tài khoản mặc định `admin` / `12345678`, đổi trong `include/app_config.h`. Trang này xem số liệu, đổi chế độ, bật tắt bơm, sửa ngưỡng được cả khi mất Internet. Thay đổi sẽ tự đồng bộ lên cloud khi có mạng lại.
+Trong cùng mạng WiFi, mở `http://iotfarm.local` (hoặc địa chỉ IP hiện ở chân màn hình TFT). Tài khoản mặc định `admin` / `12345678`, đổi trong `include/app_config.h`. Trang này xem số liệu, đổi chế độ, bật tắt bơm, sửa ngưỡng được cả khi mất Internet. Thay đổi sẽ tự đồng bộ lên cloud khi có mạng lại.
 
 ### Mất Internet / server ngủ thì sao?
 - Việc tưới chạy trên **Core 1**, hoàn toàn không phụ thuộc mạng. Cloud chậm hay chết, ESP32 vẫn tưới theo cài đặt đã lưu.
@@ -344,7 +344,7 @@ curl -X POST https://ten-app.onrender.com/api/device/sync \
 | Build báo không tìm thấy `app_config.h` | Mở đúng thư mục `firmware/` (chứa `platformio.ini`) trong VS Code |
 | ESP32 tự reset khi bơm bật | Thiếu diode song song bơm, hoặc bơm dùng chung nguồn USB với ESP32 → tách nguồn |
 | Bấm bơm trên web nhưng "Đang gửi lệnh…" mãi | Thiết bị ngoại tuyến; lệnh sẽ áp dụng khi ESP32 kết nối lại |
-| Không vào được `tuoicay.local` | Một số điện thoại Android không hỗ trợ mDNS → dùng địa chỉ IP |
+| Không vào được `iotfarm.local` | Một số điện thoại Android không hỗ trợ mDNS → dùng địa chỉ IP |
 
 ---
 

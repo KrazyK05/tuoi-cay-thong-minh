@@ -1,7 +1,7 @@
 {
-  "name": "smart-irrigation-cloud",
+  "name": "iotfarm-cloud",
   "version": "1.0.0",
-  "description": "Cloud server cho hệ thống tưới cây thông minh ESP32: API cho thiết bị, quản lý người dùng, quản lý thiết bị, web dashboard",
+  "description": "Cloud server IoTFarm - hệ thống giám sát cây trồng ESP32: API cho thiết bị, quản lý người dùng, quản lý thiết bị, web dashboard",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

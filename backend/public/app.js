@@ -1,5 +1,5 @@
 /* =====================================================================
-   WEB DASHBOARD — Tưới Cây Thông Minh
+   WEB DASHBOARD — IoTFarm · Hệ thống giám sát cây trồng
    Ứng dụng 1 trang (SPA) viết bằng JavaScript thuần, điều hướng bằng #hash.
    ===================================================================== */
 'use strict';
@@ -134,7 +134,7 @@ async function viewLogin() {
   const opt = state.authOptions || (state.authOptions = await api('GET', '/auth/options').catch(() => ({})));
   app.innerHTML = authShell(`
     <h1>Đăng nhập</h1>
-    <p class="muted">Hệ thống tưới cây thông minh IoT</p>
+    <p class="muted">IoTFarm · Hệ thống giám sát cây trồng</p>
     ${opt.first_user ? '<div class="notice info">Hệ thống chưa có tài khoản nào. Tài khoản đăng ký đầu tiên sẽ là <b>quản trị viên</b>.</div>' : ''}
     <form id="f">
       <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>

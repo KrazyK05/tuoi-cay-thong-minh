@@ -100,9 +100,10 @@ void display_boot(const char *line1, const char *line2)
     /* Giọt nước */
     tft.fillCircle(SCREEN_W / 2, 92, 18, C_GREEN);
     tft.fillTriangle(SCREEN_W / 2 - 16, 84, SCREEN_W / 2 + 16, 84, SCREEN_W / 2, 52, C_GREEN);
-    text_at("TUOI CAY THONG MINH", SCREEN_W / 2, 132, F_BIG, C_TEXT, C_BG, TC_DATUM, 0);
-    text_at(line1 ? line1 : "", SCREEN_W / 2, 170, F_TEXT, C_MUTED, C_BG, TC_DATUM, SCREEN_W);
-    text_at(line2 ? line2 : "", SCREEN_W / 2, 192, F_TEXT, C_MUTED, C_BG, TC_DATUM, SCREEN_W);
+    text_at("HE THONG GIAM SAT", SCREEN_W / 2, 122, F_BIG, C_TEXT, C_BG, TC_DATUM, 0);
+    text_at("CAY TRONG", SCREEN_W / 2, 148, F_BIG, C_GREEN, C_BG, TC_DATUM, 0);
+    text_at(line1 ? line1 : "", SCREEN_W / 2, 184, F_TEXT, C_MUTED, C_BG, TC_DATUM, SCREEN_W);
+    text_at(line2 ? line2 : "", SCREEN_W / 2, 204, F_TEXT, C_MUTED, C_BG, TC_DATUM, SCREEN_W);
     text_at("v" FIRMWARE_VERSION, SCREEN_W / 2, SCREEN_H - 14, F_SMALL, C_BORDER, C_BG, TC_DATUM, 0);
 }
 
@@ -121,7 +122,7 @@ void display_draw_layout(void)
 
     /* Thanh tiêu đề */
     tft.fillRect(0, 0, SCREEN_W, HEADER_H, C_HEADER);
-    text_at("TUOI CAY THONG MINH", 8, HEADER_H / 2, F_TEXT, C_TEXT, C_HEADER, ML_DATUM, 0);
+    text_at("GIAM SAT CAY TRONG", 8, HEADER_H / 2, F_TEXT, C_TEXT, C_HEADER, ML_DATUM, 0);
 
     /* 3 ô số liệu */
     draw_card_frame(0, "NHIET DO");

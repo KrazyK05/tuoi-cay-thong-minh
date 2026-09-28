@@ -1,6 +1,6 @@
 /* =====================================================================
  *  local_web — WEB SERVER NỘI BỘ TRÊN ESP32 (cổng 80)
- *  http://tuoicay.local hoặc http://<IP>: xem số liệu, đổi chế độ,
+ *  http://iotfarm.local hoặc http://<IP>: xem số liệu, đổi chế độ,
  *  bật tắt bơm, sửa ngưỡng — dùng được cả khi mất Internet.
  * ===================================================================== */
 #ifndef LOCAL_WEB_H
